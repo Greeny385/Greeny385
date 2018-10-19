@@ -1,0 +1,24 @@
+using System;
+using GTANetworkAPI;
+
+namespace HealthArmor
+{
+    public class HASetter : Script
+    {
+        [ServerEvent(Event.ResourceStart)]
+        public void OnResourceStart()
+        {
+            NAPI.Util.ConsoleOutput("Basic geladen! ~Checkpoint PlayerHASetter");
+        }
+    }
+    public class HealthSetter : Script
+    {
+        [Command("healths", GreedyArg = true)]
+        public void Healthsetter(Client sender, Client target, int health)
+        {
+            int h = health;
+            NAPI.Player.SetPlayerHealth(target, h);
+            NAPI.Chat.SendChatMessageToPlayer(sender, Strings.PlayerHealthArmorS.healthsetted);
+            }
+        } //weist fehler auf
+    }
